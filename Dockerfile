@@ -8,7 +8,7 @@ ADD config /elasticsearch/config
 # Set environment
 ENV DISCOVERY_SERVICE elasticsearch-discovery
 
-RUN mkdir -p /usr/share/elasticsearch/config && \
+RUN mkdir -p /usr/share/elasticsearch/config && mkdir -p /var/lib/elasticsearch && mkdir -p  /var/run/elasticsearch && \
     ln -s /elasticsearch/config /usr/share/elasticsearch/config && \
     chown -R elasticsearch:elasticsearch /var/lib/elasticsearch && \
     chown -R elasticsearch:elasticsearch /var/run/elasticsearch && \
