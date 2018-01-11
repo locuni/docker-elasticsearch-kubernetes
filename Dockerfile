@@ -8,5 +8,10 @@ ADD config /elasticsearch/config
 # Set environment
 ENV DISCOVERY_SERVICE elasticsearch-discovery
 
+RUN ln -s /elasticsearch/config /usr/share/elasticsearch/config && \
+    sudo chown -R elasticsearch:elasticsearch /var/lib/elasticsearch && \
+    sudo chown -R elasticsearch:elasticsearch /var/run/elasticsearch && \
+    sudo chown -R elasticsearch:elasticsearch /elasticsearch
+
 # Kubernetes requires swap is turned off, so memory lock is redundant
 ENV MEMORY_LOCK false
